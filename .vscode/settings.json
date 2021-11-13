@@ -16,6 +16,15 @@
 		"forward_list": "cpp",
 		"list": "cpp",
 		"queue": "cpp",
-		"string_view": "cpp"
+		"string_view": "cpp",
+		"__hash_table": "cpp",
+		"__tree": "cpp",
+		"atomic": "cpp",
+		"filesystem": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"system_error": "cpp",
+		"unordered_map": "cpp",
+		"unordered_set": "cpp"
 	}
 }
