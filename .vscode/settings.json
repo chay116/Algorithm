@@ -87,7 +87,8 @@
 		"typeindex": "cpp",
 		"typeinfo": "cpp",
 		"valarray": "cpp",
-		"__memory": "cpp"
+		"__memory": "cpp",
+		"version": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Enabled"
 
