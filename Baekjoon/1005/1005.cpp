@@ -1,46 +1,51 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-
 #include <bits/stdc++.h>
 #define fastio cin.tie(0)->sync_with_stdio(0)
 
 using namespace std;
 
-int N, finished;
-vector<vector<int>> board(1001, vector<int>(1001, 0));
-vector<int> status(1001, 0);
-vector<int> timetable(1001, 0);
-queue<pair<int, int>> q;
+int status[1001];
+int timetable[1001];
+vector<vector<int>> board(1001, vector<int>());
 
 int main() {
 	fastio;
-	pair<int, int> tmp;
-	int T, K, num1, num2, answer; cin >> N >> K;
-
-	for (int i=1; i <= N; i++) {
-		cin >> T; timetable[i] = T;
-	}
-
-	for (int i=0; i < K; i++) {
-		cin >> num1 >> num2;
-		board[num1][num2] = 1;
-		status[num2]++;
-	}
-
-	for (int i=1; i <= N; i++) {
-		if (status[i] == 0) q.push(make_pair(i, 0));
-	}
-
-	answer = -1;
-	while(!q.empty()) {
-		num1 = q.front().first;
-		num2 = q.front().second;
-		q.pop();
-		if (num2 ==)
+	int tmp, T, N, K, W, num1, num2;
+	cin >> T;
+	while (T--) {
+		cin >> N >> K;
 		for (int i=1; i <= N; i++) {
-			if (board[tmp][i] == 1)
-				if (!--status[i]) q.push(i);
+			cin >> tmp;
+			timetable[i] = tmp;
+			status[i] = 0;
+			board[i].clear();
+		}
+
+		for (int i=0; i < K; i++) {
+			cin >> num1 >> num2;
+			board[num1].push_back(num2);
+			status[num2]++;
+		}
+		cin >> W;
+		priority_queue<pair<int, int>, vector<pair<int,int>>, greater<pair<int, int>>> q;
+		for (int i=1; i <= N; i++) {
+			if (status[i] == 0) {
+				status[i] == -1;
+				q.push(make_pair(timetable[i], i));
+			}
+		}
+
+		int passedTime = -1;
+		while (status[W] != -1) {
+			passedTime = q.top().first;
+			int next = q.top().second; q.pop();
+			status[next] = -1;
+			for (int i=0; i < board[next].size(); i++) {
+				if (--status[board[next][i]] == 0) {
+					q.push(make_pair(timetable[board[next][i]] + passedTime, board[next][i]));
+				}
+			}
+		}
+		cout << passedTime << endl;
 	}
 }
 
