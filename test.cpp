@@ -1,11 +1,22 @@
 #include <iostream>
 
-using namespace std;
-int main() {
-	initializer_list<double> a = {1, 2, 3, 'a'};
-	cout << a.begin() <<  a.end() << endl;
-	for (auto as : a) {
-		cout << as;
-	}
-	cout << endl;
-}
+using namespace std;class A
+{
+  public:
+    virtual int getTotal() const { return getMoney() * getPeople(); };
+    virtual int getMoney() const { return 50; };
+  private:
+    virtual int getPeople() const { return 4; };
+};
+
+class B : public A
+{
+  private:
+    virtual int getPeople() const override { return 5; };
+};
+
+int main()
+{
+  A a.getTotal();    // 200;
+  B b.getTotal();    // 250;
+};
