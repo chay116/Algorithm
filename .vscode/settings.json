@@ -91,7 +91,8 @@
 		"version": "cpp",
 		"compare": "cpp",
 		"concepts": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"__functional_03": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "Enabled"
 
